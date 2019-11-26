@@ -1,6 +1,19 @@
-<%= form_for(@post) do |f| %>
-  <%= f.label :post %>
-  <%= f.text_field :post %>
+<div class="container" id="home">
+  <div class="home-banner">
 
-  <%= f.submit %>
-<% end %>
+    <div class="desc">
+      <h1>What makes you happy?</h1>
+    </div>
+
+    <div class="form">
+      <%= form_for(@post) do |f| %>
+      <%= f.text_field :post, cols: 100, rows: 20 %>
+      <br>
+      <br>
+      <%= f.submit %>
+      <% end %>
+    </div>
+
+  </div>
+
+</div>
