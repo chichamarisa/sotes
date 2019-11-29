@@ -18,10 +18,10 @@ owner = User.new(email: 'test@gmail.com',
                  password_confirmation: 'topsecret')
 owner.save(validate: false)
 
-Post.create!(post: "I like cats", owner_id: user.id )
-Post.create(post: "I like cats", owner_id: user.id )
-Post.create(post: "I like monkey", owner_id: user.id )
-Post.create(post: "Truffle oil", owner_id: user.id )
-Post.create(post: "Black magik", owner_id: user.id )
+Post.create!(post: "I like cats", user_id: owner.id )
+Post.create(post: "I like cats", user_id: owner.id )
+Post.create(post: "I like monkey", user_id: owner.id )
+Post.create(post: "Truffle oil", user_id: owner.id )
+Post.create(post: "Black magik", user_id: owner.id )
 
 puts "all done!"
