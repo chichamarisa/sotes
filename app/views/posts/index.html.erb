@@ -1,4 +1,11 @@
-<h1>All Posts</h1>
-<% @posts.each do |p| %>
-  <p><%= link_to p.post, post_path(p) %></p>
+<h1>What Makes You Happy?</h1>
+<%= link_to "Log out", destroy_user_session_path %>
+<%= render 'form', post: @post %>
+<h1>Your Happy Posts</h1>
+<% unless current_user.posts.nil? %>
+  <% current_user.posts.each do |p| %>
+    <p><%= link_to p.post, post_path(p) %> - <%= current_user.email %></p>
+  <% end %>
+<% else %>
+  <h1>No Posts Yet!</h1>
 <% end %>
