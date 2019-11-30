@@ -1,6 +1,10 @@
 <h1>What Makes You Happy?</h1>
-<%= link_to "Log out", destroy_user_session_path %>
-<%= render 'form', post: @post %>
+<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+
+<% if policy(Post).create? %>
+  <%= render 'form', post: @post %>
+<% end  %>
+
 <h1>Your Happy Posts</h1>
 <% unless current_user.posts.nil? %>
   <% current_user.posts.each do |p| %>
