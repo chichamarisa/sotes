@@ -8,9 +8,20 @@
 
 puts "destroying all data..."
 
-Post.create(post: "I like cats")
-Post.create(post: "I like monkey")
-Post.create(post: "Truffle oil")
-Post.create(post: "Black magik")
+Post.destroy_all
+User.destroy_all
+
+puts "creating new seeds"
+
+owner = User.new(email: 'test@gmail.com',
+                 password: 'topsecret',
+                 password_confirmation: 'topsecret')
+owner.save(validate: false)
+
+Post.create!(post: "I like cats", user_id: owner.id )
+Post.create(post: "I like cats", user_id: owner.id )
+Post.create(post: "I like monkey", user_id: owner.id )
+Post.create(post: "Truffle oil", user_id: owner.id )
+Post.create(post: "Black magik", user_id: owner.id )
 
 puts "all done!"

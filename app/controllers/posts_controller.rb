@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @post = Post.new
   end
 
   def show
@@ -13,10 +14,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.save
+    @post = Post.create!(post: post_params[:post], user_id: current_user.id)
 
-    redirect_to post_path(@post)
+    redirect_to posts_path
   end
 
   def edit
