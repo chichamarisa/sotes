@@ -1,10 +1,14 @@
 <h1>What Makes You Happy?</h1>
-<%= link_to "Log out", destroy_user_session_path %>
-<%= render 'form', post: @post %>
+<h5>Welcome back <%= current_user.email %> | <%= link_to "Sign Out", destroy_user_session_path %></h5>
+
+<% if policy(Post).create? %>
+  <%= render 'form', post: @post %>
+<% end  %>
+
 <h1>Your Happy Posts</h1>
 <% unless current_user.posts.nil? %>
   <% current_user.posts.each do |p| %>
-    <p><%= link_to p.post, post_path(p) %> - <%= current_user.email %></p>
+    <p><%=p.post%><br><%= p.created_at.strftime("%b %d %Y") %></p>
   <% end %>
 <% else %>
   <h1>No Posts Yet!</h1>
